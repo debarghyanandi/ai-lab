@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "kind": "fact",
+    "prompt": "What is the capital of Australia? Reply with only the city name.",
+    "check": {
+      "type": "contains",
+      "expected": "Canberra"
+    }
+  },
+  {
+    "id": 2,
+    "kind": "fact",
+    "prompt": "What is the capital of India? Reply with only the city name.",
+    "check": {
+      "type": "contains",
+      "expected": "New Delhi"
+    }
+  },
+  {
+    "id": 3,
+    "kind": "fact",
+    "prompt": "Which is the largest planet in our solar system? Reply with only the planet name.",
+    "check": {
+      "type": "contains",
+      "expected": "Jupiter"
+    }
+  },
+  {
+    "id": 4,
+    "kind": "arithmetic",
+    "prompt": "Calculate 44567677 * 768949. Reply with only the integer, without commas or separators.",
+    "check": {
+      "type": "number",
+      "expected": "34270270661473"
+    }
+  },
+  {
+    "id": 5,
+    "kind": "reasoning",
+    "prompt": "A bat and ball cost $1.10 together. The bat costs $1.00 more than the ball. How much does the ball cost in dollars? Reply with only the decimal number, without a currency symbol.",
+    "check": {
+      "type": "number",
+      "expected": "0.05"
+    }
+  },
+  {
+    "id": 6,
+    "kind": "json",
+    "prompt": "Reply with only a JSON object containing the keys name and age. Use the name Asha and the numeric age 30. Do not include Markdown fences or any explanation.",
+    "check": {
+      "type": "json",
+      "requiredKeys": ["name", "age"]
+    }
+  },
+  {
+    "id": 7,
+    "kind": "json",
+    "prompt": "Reply with only a JSON object containing the keys success and errors. Set success to the boolean true and errors to an empty array. Do not include Markdown fences or any explanation.",
+    "check": {
+      "type": "json",
+      "requiredKeys": ["success", "errors"]
+    }
+  },
+  {
+    "id": 8,
+    "kind": "bullets",
+    "prompt": "Give exactly 3 bullet points about benefits of automated software tests. Put each bullet on its own line starting with - followed by a space. Include no heading, introduction, conclusion, or additional lines.",
+    "check": {
+      "type": "bullets"
+    }
+  },
+  {
+    "id": 9,
+    "kind": "code",
+    "prompt": "Write a small C# method with the signature public static bool IsPrime(int number). It must return false for every number below 2, correctly identify primes and composites, and avoid integer overflow when checking divisors up to the square root. Return only the method.",
+    "check": {
+      "type": "manual",
+      "rubric": "0 = missing, invalid C#, or fundamentally incorrect. 1 = mostly correct but misses an edge case, risks integer overflow, or uses an unnecessarily slow full-range loop. 2 = valid method with correct handling of values below 2, 2, primes and composites, an overflow-safe square-root loop, and no extra prose. Check examples: -1=false, 0=false, 1=false, 2=true, 9=false, 97=true, 2147483647=true."
+    }
+  },
+  {
+    "id": 10,
+    "kind": "summary",
+    "prompt": "Summarize the following fictional report in exactly two sentences. Cover the measured benefit, the limits of the evidence, and the recommendation. Use only information in the report.\n\nThe Cedar Support Pilot\n\nCedar is a fictional software company that provides scheduling tools to small businesses. Its support team answers questions about account access, billing, calendar settings, and integrations. As the customer base grew, agents spent more time searching internal documents before drafting replies. Managers proposed an assistant that could retrieve relevant guidance and suggest an answer. They did not authorize the assistant to send messages, change accounts, issue refunds, or close tickets. The pilot therefore evaluated a drafting aid used by people who retained responsibility for every customer response. Its purpose was to reduce routine work while preserving the existing review process.\n\nThe trial lasted six weeks and involved twelve experienced support agents. Researchers selected two thousand routine tickets written in English, excluding urgent security reports, legal complaints, and requests involving account ownership disputes. Tickets were assigned to an assisted group or a comparison group using the same routing rules. Agents in the comparison group used the normal search tools and reply editor. Agents in the assisted group could inspect suggested sources and edit a generated draft. Both groups had access to the same approved documentation. The team recorded active handling time, review outcomes, edits, and agent feedback throughout the trial period.\n\nBefore the pilot, the company reviewed its internal knowledge collection. Some articles described retired features, while others contained conflicting instructions for different subscription plans. Editors removed obsolete material, added product version labels, and clarified who owned each article. They also restricted retrieval to documents that support agents were already permitted to read. This preparation required substantial effort from product specialists. The project team emphasized that the assistant depended on the quality of this collection. Better retrieval could not repair a misleading policy, and a fluent draft could make outdated guidance appear more convincing if the source review was skipped entirely.\n\nThe assistant followed a simple process. It received the customer's question, searched the approved collection, and selected a small set of passages. The model then drafted a reply using those passages and attached references for the agent to inspect. When the selected material did not support an answer, the instructions asked the assistant to say that more information was needed. Agents could accept parts of a draft, rewrite the whole message, or ignore the suggestion. The interface kept the original ticket visible beside the proposed response so that checking the customer context did not require switching between separate application windows.\n\nAcross the selected tickets, median active handling time fell from eleven minutes in the comparison group to nine minutes in the assisted group. That is roughly an eighteen percent reduction. The metric counted time spent reading, searching, drafting, and checking a ticket; it excluded time waiting for a customer to reply. The result therefore described agent effort rather than the total time a customer waited for resolution. Managers also examined the spread of handling times, because a lower median could hide difficult cases that became slower. Some unfamiliar integration questions still required extended investigation regardless of whether a draft was available.\n\nReviewers evaluated a sample of replies without being told which group produced them. The overall quality scores were similar between the groups, and the trial did not establish a clear improvement in customer satisfaction. Reviewers found that assisted replies were often easier to scan, but sometimes sounded more certain than the source material justified. The team treated accurate qualifications as part of answer quality rather than as unnecessary caution. A reply that clearly explained an unresolved limitation was preferable to one that offered a confident but unsupported instruction. Agents were reminded that polished language did not remove the need for checking.\n\nDuring weekly audits, the reviewers found unsupported statements in fourteen of the two hundred assisted drafts they inspected. These were drafts captured before the normal agent review, so this finding did not mean that fourteen incorrect messages reached customers. Several errors involved applying instructions from one subscription plan to another. Others combined individually correct passages into a conclusion that neither passage supported. Agents corrected many of these problems, but the audit could not prove that every unsupported statement had been caught. The report recommended keeping draft-level error tracking separate from measures of final replies so that neither measure concealed the other.\n\nThe largest gains appeared in account settings and common calendar questions, where the approved articles were consistent and the required steps were familiar. Benefits were smaller for integrations that depended on a customer's external configuration. Agents also reported that a poor suggestion could cost more time than starting with a blank editor because they had to locate and correct its assumptions. The project team therefore avoided reporting one average saving as a promise for every category. Future evaluations would group tickets by topic and difficulty, while retaining an overall view of the workload actually handled by the support team each week.\n\nResponse speed mattered to the agents, but model speed was only one part of their experience. Searching for sources, loading the model, generating the draft, and inspecting the result all contributed to the delay. A faster model that required extensive editing could produce a worse overall workflow than a slower model with better grounded answers. The engineering team recorded generation timing separately from handling time. It also tracked whether the model remained loaded between requests, because startup costs could distort short measurements. These technical measurements helped explain delays, but they were not treated as substitutes for the observed human effort required.\n\nPrivacy controls remained in place throughout the pilot. Agents could view only tickets and documents allowed by their existing roles, and the assistant had no independent account permissions. The experiment stored the minimum information needed for review in a restricted location. Staff were told which records were retained and who could inspect them. The report stressed that privacy protections were part of the system design, not a property guaranteed by using a local model. Access rules, retention decisions, and operational checks still required explicit attention. No result from this trial justified expanding document access or collecting unrelated customer information automatically.\n\nThe pilot also created maintenance work that was not included in the handling-time comparison. Product specialists reviewed article changes, engineers investigated retrieval failures, and reviewers sampled draft quality. The team logged these activities so that future cost estimates could account for them. It did not calculate a reliable overall financial return during the six weeks. Hardware costs, support volume, documentation work, and the value of saved time would all affect that calculation. Managers were warned against multiplying the observed time reduction by every ticket the company received, because many ticket types and working conditions were outside the trial's chosen scope.\n\nSeveral limits prevented broad conclusions. The participants were experienced agents who already knew how to recognize incorrect guidance, so the results might not apply to new hires. All selected tickets were in English, leaving other languages untested. The trial covered routine requests and a short period of normal operations; it did not measure performance during a major outage or a sudden policy change. Agents also knew that the tool was being evaluated, which could affect their behavior. A longer study with a wider range of participants and ticket categories would be needed before estimating benefits for the whole support organization.\n\nAgent feedback suggested practical improvements before any expansion. Participants wanted clearer links between individual claims and source passages, better warnings when sources disagreed, and an easy way to dismiss a draft without recording a long explanation. They also requested that the interface show when an article had last been reviewed. These suggestions focused on making verification easier rather than encouraging automatic acceptance. The team planned to test the changes with the same kinds of tickets before adding new capabilities. It would preserve a simple fallback to the normal search and editor whenever the assistant was slow, unavailable, or unhelpful to agents.\n\nThe final recommendation was a limited continuation for the routine English-language categories already studied, with human review required for every outgoing reply. The team proposed another evaluation after improving the documentation and claim-level references. That evaluation would track draft errors, final reply quality, handling time, maintenance effort, and results for less experienced agents. The report explicitly rejected moving directly to automatic customer replies. The measured time saving was encouraging, but it did not establish that unattended answers would be reliable. Expansion to other languages or sensitive cases would require separate evidence and approval rather than an assumption that the pilot generalized.",
+    "check": {
+      "type": "manual",
+      "rubric": "0 = missing, contradicts the report, or largely invents findings. 1 = broadly accurate but misses an important finding, overstates the evidence, or is not exactly two sentences. 2 = exactly two accurate sentences covering the reduction from 11 to 9 minutes (about 18%), the evidence limits or draft errors, and the recommendation for limited continuation with human review rather than automatic replies."
+    }
+  }
+]
